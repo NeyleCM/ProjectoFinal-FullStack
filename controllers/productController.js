@@ -12,6 +12,6 @@ const template = `<!DOCTYPE html>
 
 module.exports = {
     productsTemplate: (obj) => {
-        const template 
+        const template = ""
     }
 }
