@@ -6,12 +6,12 @@ const template = `<!DOCTYPE html>
     <title>Productos</title>
 </head>
 <body>
-    
+    <nav
 </body>
 </html>`
 
 module.exports = {
     productsTemplate: (obj) => {
-
+        const template 
     }
 }
