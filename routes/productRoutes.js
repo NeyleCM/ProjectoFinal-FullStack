@@ -1,12 +1,14 @@
 const express = require("express")
 const router = express.Router()
-const Product = require("../models/Product.js")
+const Product = require("../models/Product")
 
 router.get("/products", async (req, res) => {
-    try {
-        
+    try { //mongoose-paginate?
+        const getProducts = await Product.find()
+        res.status(200).json(getProducts)
     } catch (error) {
-        
+        console.log(error)
+        res.status(500).json({message: "Error to get all products"})
     }
 })
 
@@ -22,11 +24,13 @@ router.get("/products/:productId", async (req, res) => {
     }
 })
 
-router.get("/dashborad", async (req, res) => {
+router.get("/dashboard", async (req, res) => {
     try {
-        
+        const products = await Product.find();  
+        res.status(200).json(products);  
     } catch (error) {
-        
+        console.log(error);
+        res.status(500).json({ message: "Error getting dashboard" });
     }
 })
 
