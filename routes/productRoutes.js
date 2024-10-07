@@ -82,6 +82,6 @@ router.delete("/dashboard/:productId/delete", async (req, res) => {
     }
 })
 
-router.delete()
+//router.delete()
 
 module.exports = router
