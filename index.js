@@ -9,7 +9,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());  // Habilita CORS
+//app.use(cors());  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,6 +21,5 @@ app.use("/", authRoutes);
 // Conexión a la base de datos
 dbConnection();
 
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
-});
+app.listen(PORT, () => console.log
+(`La aplicación está escuchando en el puerto http://localhost:${PORT}`))
