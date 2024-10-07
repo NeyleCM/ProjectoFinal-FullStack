@@ -47,7 +47,8 @@ router.get("/products/:productId", async (req, res) => {
     try {
         const id = req.params.productId;
         const product = await Product.findById(id);
-        res.status(200).res(productIdTemplate(product))
+        const template = productIdTemplate(product)
+        res.status(200).send(template)
     } catch (error) {
         console.log(error)
         res.status(500).json({message: "Error to get a producto by id"})

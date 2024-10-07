@@ -59,12 +59,12 @@ const productIdTemplate = (obj) => {
             <main>
                 ${navTemplate}
                 <section>
-                    <h1>${obj[0].name}</h2>
-                    <img src="${obj[0].image}"/>
-                    <p>${obj[0].description}</p>
-                    <span>${obj[0].price}</span>
-                    <p>Categoria: ${obj[0].category}</p>
-                    <span>Tallas disponibles: ${obj[0].size.map(element => element).join(", ")}</span>
+                    <h1>${obj.name}</h2>
+                    <img src="${obj.image}"/>
+                    <p>${obj.description}</p>
+                    <span>${obj.price}€</span>
+                    <p>Categoria: ${obj.category}</p>
+                    <span>Tallas disponibles: ${obj.size.map(element => element).join(" | ")}</span>
                 </section>
             </main>
         </body>

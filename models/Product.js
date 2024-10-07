@@ -9,6 +9,6 @@ const productSchema = mongoose.Schema({
     price: Number
 })
 
-const Product = mongoose.Model("Product", productSchema)
+const Product = mongoose.model("Product", productSchema)
 
 module.exports = Product
