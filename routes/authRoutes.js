@@ -14,6 +14,18 @@ router.get("/dashboard", async (req, res) => {
     }
 })
 
+router.get("/dashboard/login", async (req, res) => {
+    try {
+        const products = await Product.find();
+        const template = productsTemplate("Dashboard", products)
+        res.status(200).send(template)
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message: "Error to get a producto by id"})
+    }
+})
+
+
 router.get("/dashboard/new", async (req, res) => {
     try {
         

@@ -1,12 +1,12 @@
 const navTemplate = 
 `
     <nav>
-        <a href="#">Productos</a>
-        <a href="#">Camisetas</a>
-        <a href="#">Pantalones</a>
-        <a href="#">Zapatos</a>
-        <a href="#">Accesorios</a>
-        <a href="#">Login</a>
+        <a href="/products">Productos</a>
+        <a href="/products/camisetas">Camisetas</a>
+        <a href="/products/pantalones">Pantalones</a>
+        <a href="/products/zapatos">Zapatos</a>
+        <a href="/products/accesorios">Accesorios</a>
+        <a href="/dashboard/login">Login</a>
     </nav>
 `
 
@@ -32,7 +32,7 @@ const productsTemplate = (name, obj) => {
                                 <li>
                                     <h2>${element.name}
                                     <img src=${element.image} />
-                                    <button href="/">Ver</button>
+                                    <a href="/products/${element._id}">Ver</a>
                                 </li>
                             `
                             return templateElement
