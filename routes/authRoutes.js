@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
+const { productsTemplate, productIdTemplate, createProductTemplate} = require("../controllers/productController.js")
 
 
 router.get("/dashboard", async (req, res) => {
@@ -26,11 +27,13 @@ router.get("/dashboard/login", async (req, res) => {
 })
 
 
-router.get("/dashboard/new", async (req, res) => {
+router.post("/dashboard/new", async (req, res) => {
     try {
-        
+        const template = createProductTemplate();
+        res.status(200).send(template);
     } catch (error) {
-        
+        console.log(error);
+        res.status(500).json({ message: "Error to show the form" });
     }
 })
 
