@@ -4,6 +4,8 @@ const Product = require("../models/Product.js")
 const { productsTemplate, productIdTemplate} = require("../controllers/productController.js")
 let prueba;
 
+router.get("/", (req, res) => res.redirect("/products"))
+
 router.get("/products", async (req, res) => {
     try { //mongoose-paginate?
         const products = await Product.find()

@@ -1,5 +1,4 @@
-const navTemplate = 
-`
+const navTemplate = `    
     <nav>
         <a href="/products">Productos</a>
         <a href="/products/camisetas">Camisetas</a>
@@ -9,16 +8,19 @@ const navTemplate =
         <a href="/dashboard/login">Login</a>
     </nav>
 `
-
+const doctype = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="../public/styles.css">
+</head>
+`
 const productsTemplate = (name, obj) => {
-    const template = `<!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Productos</title>
-            <link rel="stylesheet" href="../public/styles.css">
-        </head>
+    const template = `
+        ${doctype}
         <body>
             <main>
                 ${navTemplate}
@@ -46,14 +48,8 @@ const productsTemplate = (name, obj) => {
 }
 
 const productIdTemplate = (obj) => {
-    const template = `<!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Productos</title>
-            <link rel="stylesheet" href="../public/styles.css">
-        </head>
+    const template = `
+        ${doctype}
         <body>
             <main>
                 ${navTemplate}
