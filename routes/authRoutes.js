@@ -3,7 +3,7 @@ const router = express.Router()
 const Product = require("../models/Product.js")
 const { authDasboardCntr, authIdTemplate, createProductTemplate} = require("../controllers/authController.js")
 
-
+// Mostrar todos los productos en el Dashboard
 router.get("/dashboard", async (req, res) => {
     try {
         const products = await Product.find();
@@ -70,7 +70,6 @@ router.get("/dashboard/login", async (req, res) => {
     }
 })
 
-
 router.get("/dashboard/new", async (req, res) => {
     try {
         const template = createProductTemplate();
@@ -81,6 +80,7 @@ router.get("/dashboard/new", async (req, res) => {
     }
 })
 
+// Crear un nuevo producto
 router.post("/dashboard", async (req, res) => {
     try {
         const newProduct = await Product.create({
@@ -94,6 +94,7 @@ router.post("/dashboard", async (req, res) => {
     }
 })
 
+// Ver detalles de un producto específico en el Dashboard
 router.get("/dashboard/:productId", async (req, res) => {
     try {
         const id = req.params.productId;
@@ -106,6 +107,7 @@ router.get("/dashboard/:productId", async (req, res) => {
     }
 })
 
+// Mostrar el formulario para editar un producto
 router.get("/dashboard/:productId/edit", async (req, res) => {
     try {
         const id = req.params.productId;
@@ -118,6 +120,7 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
     }
 })
 
+// Actualizar un producto
 router.put("/dashboard/:productId", async (req, res) => {
     try {
         
@@ -126,6 +129,7 @@ router.put("/dashboard/:productId", async (req, res) => {
     }
 })
 
+// Eliminar un producto
 router.delete("/dashboard/:productId/delete", async (req, res) => {
     try {
         const id = req.params.productId;
@@ -137,5 +141,82 @@ router.delete("/dashboard/:productId/delete", async (req, res) => {
         res.status(500).json({ message: "Error to delete product" });
     }
 })
+
+
+router.get("/dashboard/camisetas", async (req, res) => {
+    try {
+        const products = await Product.find({ category: "camisetas" });
+        const template = productsTemplate("Camisetas", products);
+        res.status(200).send(template);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error retrieving camisetas" });
+    }
+});
+
+router.get("/dashboard/zapatos", async (req, res) => {
+    try {
+        const products = await Product.find({ category: "zapatos" });
+        const template = productsTemplate("Zapatos", products);
+        res.status(200).send(template);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error retrieving zapatos" });
+    }
+});
+
+router.get("/dashboard/pantalones", async (req, res) => {
+    try {
+        const products = await Product.find({ category: "pantalones" });
+        const template = productsTemplate("Pantalones", products);
+        res.status(200).send(template);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error retrieving pantalones" });
+    }
+});
+
+router.get("/dashboard/accesorios", async (req, res) => {
+    try {
+        const products = await Product.find({ category: "accesorios" });
+        const template = productsTemplate("Accesorios", products);
+        res.status(200).send(template);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error retrieving accesorios" });
+    }
+});
+
+router.post("/dashboard/new", async (req, res) => {
+    try {
+        const template = createProductTemplate();
+        res.status(200).send(template);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error showing the form" });
+    }
+});
+
+router.post("/dashboard", async (req, res) => {
+    try {
+        const newProduct = await Product.create(req.body); // Crear un nuevo producto con los datos del cuerpo de la solicitud
+        res.status(201).json(newProduct);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error creating the product" });
+    }
+});
+
+router.get("/dashboard/:productId", async (req, res) => {
+    try {
+        const _id = req.params.productId;
+        const product = await Product.findById(_id);
+        const template = productIdTemplate(product);
+        res.status(200).send(template);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error retrieving product by id" });
+    }
+});
 
 module.exports = router

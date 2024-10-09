@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
 const { productsTemplate, productIdTemplate} = require("../controllers/productController.js")
+let prueba;
 
 router.get("/products", async (req, res) => {
     try { //mongoose-paginate?
@@ -52,11 +53,11 @@ router.get("/products/accesorios", async (req, res) => {
         const products = await Product.find({ category: "accesorios" });
         const template = productsTemplate("Accesorios", products)
         res.status(200).send(template)
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({message: "Error to get accesorios"})
-    }
-})
+     } catch (error) {
+         console.log(error)
+         res.status(500).json({message: "Error to get accesorios"})
+     }
+ })
 
 router.get("/products/:productId", async (req, res) => {
     try {
