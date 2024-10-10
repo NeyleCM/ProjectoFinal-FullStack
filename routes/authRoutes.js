@@ -73,7 +73,7 @@ router.get("/dashboard/login", async (req, res) => {
 router.get("/dashboard/new", async (req, res) => {
     try {
         const template = createProductTemplate();
-        res.status(200).send(template); //Aqui hay que hacer un formulario donde realizamos el nuevo producto
+        res.status(200).send(); //Aqui hay que hacer un formulario donde realizamos el nuevo producto
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Error to show the form" });
@@ -88,7 +88,6 @@ router.post("/dashboard", async (req, res) => {
         const haveSize = []
 
         sizeArray.forEach(element => {
-            console.log(req.body[element])
             if(req.body[element] == "on"){
                 haveSize.push(element)
             }
@@ -128,7 +127,7 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
     try {
         const id = req.params.productId;
         const product = await Product.findById(id);
-        const template = editProductTemplate(product)
+        const template = editProductTemplate(id)
         res.status(200).send(template);
     } catch (error) {
         console.log(error);
@@ -143,9 +142,9 @@ router.post("/dashboard/:productId", async (req, res) => {
         const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
         let haveSize = []
         const _id = req.params.productId
+        console.log(_id)
 
         sizeArray.forEach(element => {
-            console.log(req.body[element])
             if(req.body[element] == "on"){
                 haveSize.push(element)
             }
@@ -155,7 +154,7 @@ router.post("/dashboard/:productId", async (req, res) => {
             haveSize = product.size
         }
         const updateProduct = {
-            ... product,    
+            ... product._doc,    
             name: req.body.name || this.name,
             description: req.body.description || this.description,
             image: req.body.image || this.image,
@@ -163,7 +162,8 @@ router.post("/dashboard/:productId", async (req, res) => {
             size: haveSize,
             price: req.body.price || this.price
         }
-        const updated = await Product.findOneAndUpdate(_id, updateProduct)
+        console.log(updateProduct)
+        const updated = await Product.updateOne()
         res.redirect("/dashboard")
     } catch (error) {
         console.log(error)

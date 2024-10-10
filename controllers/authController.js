@@ -121,14 +121,14 @@ const createProductTemplate = () => {
     return template;
 };
 
-const editProductTemplate = () => {
+const editProductTemplate = (id) => {
     const template = 
     `
         ${doctype}
             <body>
             ${navTemplate}
                 <main>
-                    <form action="/dashboard/:productId" method="POST">
+                    <form action="/dashboard/${id}" method="POST">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" name="name">
                         
