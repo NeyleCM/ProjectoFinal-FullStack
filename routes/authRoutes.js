@@ -137,11 +137,37 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
 })
 
 // Actualizar un producto
-router.put("/dashboard/:productId", async (req, res) => {
+router.post("/dashboard/:productId", async (req, res) => {
     try {
-        
+        //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
+        const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
+        let haveSize = []
+        const _id = req.params.productId
+
+        sizeArray.forEach(element => {
+            console.log(req.body[element])
+            if(req.body[element] == "on"){
+                haveSize.push(element)
+            }
+        })
+        const product = await Product.findById(_id)
+        if (haveSize.length === 0) {
+            haveSize = product.size
+        }
+        const updateProduct = {
+            ... product,    
+            name: req.body.name || this.name,
+            description: req.body.description || this.description,
+            image: req.body.image || this.image,
+            category: req.body.category || this.category,
+            size: haveSize,
+            price: req.body.price || this.price
+        }
+        const updated = await Product.findOneAndUpdate(_id, updateProduct)
+        res.redirect("/dashboard")
     } catch (error) {
-        
+        console.log(error)
+        res.status(500).json({message: "Error to create the product"})
     }
 })
 

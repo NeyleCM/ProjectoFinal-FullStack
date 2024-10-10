@@ -128,7 +128,7 @@ const editProductTemplate = () => {
             <body>
             ${navTemplate}
                 <main>
-                    <form action="/dashboard/:productId" method="put">
+                    <form action="/dashboard/:productId" method="POST">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" name="name">
                         
@@ -138,18 +138,24 @@ const editProductTemplate = () => {
                         <label for="price">Precio:</label>
                         <input type="number" id="price" name="price">
                         
-                        <label for="category">Categoria:</label>
-                        <input type="text" id="category" name="category">
+                        <label for="category">Categoría:</label>
+                        <select id="category" name="category">
+                            <option value="camisetas">Camisetas</option>
+                            <option value="pantalones">Pantalones</option>
+                            <option value="zapatos">Zapatos</option>
+                            <option value="accesorios">Accesorios</option>
+                        </select>
                         
                         <label for="image">URL imagen:</label>
                         <input type="url" id="image" name="image">
 
                         <label for="size">Talla:</label>
-                        <input type="text" id="size" name="size">
+                        <div id="sizeController"></div>
 
                         <button type="submit">Edit Product</button>
                     </form>
                 </main>
+                <script src="/chaceSizeController.js"></script>
             </body>
         </html
     `
