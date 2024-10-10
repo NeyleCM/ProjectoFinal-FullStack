@@ -73,7 +73,7 @@ router.get("/dashboard/login", async (req, res) => {
 router.get("/dashboard/new", async (req, res) => {
     try {
         const template = createProductTemplate();
-        res.status(200).send(); //Aqui hay que hacer un formulario donde realizamos el nuevo producto
+        res.status(200).send(template); //Aqui hay que hacer un formulario donde realizamos el nuevo producto
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Error to show the form" });
