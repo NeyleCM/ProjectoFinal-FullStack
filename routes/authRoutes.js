@@ -86,7 +86,7 @@ router.post("/dashboard", async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         const haveSize = []
-        
+
         sizeArray.forEach(element => {
             console.log(req.body[element])
             if(req.body[element] == "on"){
@@ -186,3 +186,5 @@ router.post("/dashboard/:productId/delete", async (req, res) => {
 })
 
 module.exports = router
+
+//prueba

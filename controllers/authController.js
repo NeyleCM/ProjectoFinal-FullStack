@@ -170,3 +170,5 @@ module.exports = {
     createProductTemplate,
     editProductTemplate
 };
+
+//prueba
