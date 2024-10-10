@@ -18,10 +18,10 @@ const doctype =
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Productos</title>
-            <link rel="stylesheet" href="../public/styles.css">
+            <link rel="stylesheet" href="/styles.css">
         </head>
 `
-    
+    //<link rel="stylesheet" href="../public/styles.css">
 
 const authDasboardCntr = (name, obj) => {
     const template = `
@@ -107,17 +107,17 @@ const createProductTemplate = () => {
 
 
                         <label for="size">Talla:</label>
-                        <input type="text" id="size" name="size" required>
                         <div id="sizeController"></div>
 
                         <button type="submit">Crear producto</button>
+                        
                     </form>
                 </main>
-                <script src="../scripts/chaceSizeController.js"></script>
+                <script src="/chaceSizeController.js"></script>
             </body>
         </html>
     `;
-
+//<script src="../scripts/chaceSizeController.js"></script>
     return template;
 };
 
@@ -153,10 +153,12 @@ const editProductTemplate = () => {
             </body>
         </html
     `
+    return template
 }
 
 module.exports = {
     authDasboardCntr,
     authIdTemplate,
-    createProductTemplate
+    createProductTemplate,
+    editProductTemplate
 };

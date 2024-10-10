@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
-const { authDasboardCntr, authIdTemplate, createProductTemplate} = require("../controllers/authController.js")
+const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate } = require("../controllers/authController.js")
 
 // Mostrar todos los productos en el Dashboard
 router.get("/dashboard", async (req, res) => {
@@ -83,11 +83,27 @@ router.get("/dashboard/new", async (req, res) => {
 // Crear un nuevo producto
 router.post("/dashboard", async (req, res) => {
     try {
+        //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
+        const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
+        const haveSize = []
+
+        sizeArray.forEach(element => {
+            console.log(req.body[element])
+            if(req.body[element] == "on"){
+                haveSize.push(element)
+            }
+        })
         const newProduct = await Product.create({
-            ... req.body
+            name: req.body.name,
+            description: req.body.description,
+            image: req.body.image,
+            category: req.body.category,
+            size: haveSize,
+            price: req.body.price
         })
         const product = await Product.create(newProduct)
-        res.status(201).json(product)
+        //res.status(201).json(product)
+        res.redirect("/dashboard")
     } catch (error) {
         console.log(error)
         res.status(500).json({message: "Error to create the product"})
@@ -112,7 +128,7 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
     try {
         const id = req.params.productId;
         const product = await Product.findById(id);
-        let template 
+        const template = editProductTemplate(product)
         res.status(200).send(template);
     } catch (error) {
         console.log(error);

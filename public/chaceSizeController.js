@@ -1,8 +1,10 @@
 console.log("Usa el script")
+const category = document.getElementById("category")
 const changeSizeType = () => {
     console.log("Entra en la funcion")
-    const category = document.getElementById("category").value
-    if(category != "zapatos"){
+    const catSelected = category.options[category.selectedIndex].value
+    console.log(catSelected)
+    if(catSelected != "zapatos"){
         console.log("Categoria no zapatos")
         return `  
         <input type="checkbox" class="checkbox" id="xs" name="xs">
@@ -50,8 +52,8 @@ const changeSizeType = () => {
 }
 
 const divSize = document.getElementById("sizeController")
+divSize.innerHTML = changeSizeType()
 
-
-// document.addEventListener("change", () => {
-//     divSize.innerHTML = changeSizeType()
-// })
+category.addEventListener("change", () => {
+    divSize.innerHTML = changeSizeType()
+})
