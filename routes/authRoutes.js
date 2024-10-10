@@ -88,7 +88,6 @@ router.post("/dashboard", async (req, res) => {
         const haveSize = []
 
         sizeArray.forEach(element => {
-            console.log(req.body[element])
             if(req.body[element] == "on"){
                 haveSize.push(element)
             }
@@ -128,7 +127,7 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
     try {
         const id = req.params.productId;
         const product = await Product.findById(id);
-        const template = editProductTemplate(product, sizeArray)
+        const template = editProductTemplate(id)
         res.status(200).send(template);
     } catch (error) {
         console.log(error);
@@ -143,9 +142,9 @@ router.post("/dashboard/:productId", async (req, res) => {
         console.log(req.body);
         let haveSize = []
         const _id = req.params.productId
+        console.log(_id)
 
         sizeArray.forEach(element => {
-            console.log(req.body[element])
             if(req.body[element] == "on"){
                 haveSize.push(element)
             }
@@ -156,7 +155,7 @@ router.post("/dashboard/:productId", async (req, res) => {
         }
         // Objeto para actualizar el producto
         const updateProduct = {
-            ... product,    
+            ... product._doc,    
             name: req.body.name || this.name,
             description: req.body.description || this.description,
             image: req.body.image || this.image,
@@ -165,6 +164,8 @@ router.post("/dashboard/:productId", async (req, res) => {
             price: req.body.price || this.price
         }
         await Product.findOneAndUpdate({_id} , updateProduct, { new: true })
+        console.log(updateProduct)
+        const updated = await Product.updateOne()
         res.redirect("/dashboard")
     } catch (error) {
         console.log(error)

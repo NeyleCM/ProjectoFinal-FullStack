@@ -121,8 +121,6 @@ const createProductTemplate = () => {
     return template;
 };
 
-const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
-
 const editProductTemplate = (product) => {
     const template = 
     `
