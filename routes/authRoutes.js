@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
 const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate } = require("../controllers/authController.js")
+const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
 
 // Mostrar todos los productos en el Dashboard
 router.get("/dashboard", async (req, res) => {
@@ -84,9 +85,8 @@ router.get("/dashboard/new", async (req, res) => {
 router.post("/dashboard", async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
-        const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
         const haveSize = []
-
+        
         sizeArray.forEach(element => {
             console.log(req.body[element])
             if(req.body[element] == "on"){
@@ -128,7 +128,7 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
     try {
         const id = req.params.productId;
         const product = await Product.findById(id);
-        const template = editProductTemplate(product)
+        const template = editProductTemplate(product, sizeArray)
         res.status(200).send(template);
     } catch (error) {
         console.log(error);
@@ -140,7 +140,7 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
 router.post("/dashboard/:productId", async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
-        const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
+        console.log(req.body);
         let haveSize = []
         const _id = req.params.productId
 
@@ -152,8 +152,9 @@ router.post("/dashboard/:productId", async (req, res) => {
         })
         const product = await Product.findById(_id)
         if (haveSize.length === 0) {
-            haveSize = product.size
+            haveSize = product.size// Mantener las tallas existentes si no se seleccionan nuevas
         }
+        // Objeto para actualizar el producto
         const updateProduct = {
             ... product,    
             name: req.body.name || this.name,
@@ -163,11 +164,11 @@ router.post("/dashboard/:productId", async (req, res) => {
             size: haveSize,
             price: req.body.price || this.price
         }
-        const updated = await Product.findOneAndUpdate(_id, updateProduct)
+        await Product.findOneAndUpdate({_id} , updateProduct, { new: true })
         res.redirect("/dashboard")
     } catch (error) {
         console.log(error)
-        res.status(500).json({message: "Error to create the product"})
+        res.status(500).json({message: "Error to edit the product"})
     }
 })
 

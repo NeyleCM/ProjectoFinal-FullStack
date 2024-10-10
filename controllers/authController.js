@@ -121,22 +121,24 @@ const createProductTemplate = () => {
     return template;
 };
 
-const editProductTemplate = () => {
+const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
+
+const editProductTemplate = (product) => {
     const template = 
     `
         ${doctype}
             <body>
             ${navTemplate}
                 <main>
-                    <form action="/dashboard/:productId" method="POST">
+                    <form action="/dashboard/${product._id}" method="POST">
                         <label for="name">Nombre:</label>
-                        <input type="text" id="name" name="name">
+                        <input type="text" id="name" name="name" value=""> 
                         
-                        <label for="description">Descripcion:</label>
-                        <textarea id="description" name="description"></textarea>
+                        <label for="description">Descripción:</label>
+                        <textarea id="description" name="description"></textarea> 
                         
                         <label for="price">Precio:</label>
-                        <input type="number" id="price" name="price">
+                        <input type="number" id="price" name="price" value="">
                         
                         <label for="category">Categoría:</label>
                         <select id="category" name="category">
@@ -147,7 +149,7 @@ const editProductTemplate = () => {
                         </select>
                         
                         <label for="image">URL imagen:</label>
-                        <input type="url" id="image" name="image">
+                        <input type="url" id="image" name="image" value=""> 
 
                         <label for="size">Talla:</label>
                         <div id="sizeController"></div>
@@ -157,10 +159,10 @@ const editProductTemplate = () => {
                 </main>
                 <script src="/chaceSizeController.js"></script>
             </body>
-        </html
-    `
-    return template
-}
+        </html>
+    `;
+    return template;
+};
 
 module.exports = {
     authDasboardCntr,
