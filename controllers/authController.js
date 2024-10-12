@@ -162,38 +162,12 @@ const editProductTemplate = (product) => {
     return template;
 };
 
-const loginTemplate = () => {
-    const template = `
-        ${doctype}
-        <body>
-            <main>
-                <section>
-                    <h1>Iniciar Sesión</h1>
-                    <form action="/login" method="POST">
-                        <div>
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" placeholder="ejemplo@gmail.com" required />
-                        </div>
-                        <div>
-                            <label for="password">Contraseña</label>
-                            <input type="password" id="password" name="password" placeholder="Introduce tu contraseña" required />
-                        </div>
-                        <button type="submit">Iniciar Sesión</button>
-                    </form>
-                </section>
-            </main>
-        </body>
-        </html>
-    `;
-    return template;
-}
 
 module.exports = {
     authDasboardCntr,
     authIdTemplate,
     createProductTemplate,
     editProductTemplate,
-    loginTemplate
 };
 
 //prueba
