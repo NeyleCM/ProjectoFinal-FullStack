@@ -14,8 +14,6 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 })
 
-
-
 // Middleware
 //app.use(cors());  
 app.use(express.json());
