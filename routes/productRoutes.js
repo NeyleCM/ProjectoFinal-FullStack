@@ -2,7 +2,9 @@ const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
 const { productsTemplate, productIdTemplate, loginTemplate} = require("../controllers/productController.js")
-const { auth } = require("firebase-admin")
+const admin = require("firebase-admin")
+const auth = admin.auth() 
+
 
 router.get("/", (req, res) => res.redirect("/products"))
 
@@ -66,10 +68,11 @@ router.get("/products/login", (req, res) => {
     res.status(200).send(template)
 })
 
-router.post("/products/login", async (req, res) => {
+router.post("/login", async (req, res) => {
+    const { idToken } = req.body
     try {
-        const { idToken } = req.body
-        await auth.verifyToken(idToken)
+        const autorizacion = await auth.verifyIdToken(idToken)
+        console.log(autorizacion)
         res.cookie("token", idToken, {httpOnly: true, secure: false})
         res.json({success: true})
 
