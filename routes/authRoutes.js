@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
-const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate } = require("../controllers/authController.js")
+const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate, loginTemplate } = require("../controllers/authController.js")
 const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
 
 // Mostrar todos los productos en el Dashboard
@@ -59,6 +59,13 @@ router.get("/dashboard/accesorios", async (req, res) => {
         res.status(500).json({message: "Error to get accesorios"})
     }
 })
+
+// Formulario de login
+router.get("/dashboard/login", (req, res) => {
+    const template = loginTemplate();
+    res.status(200).send(template);
+});
+
 
 router.get("/dashboard/login", async (req, res) => {
     try {
@@ -188,4 +195,4 @@ router.post("/dashboard/:productId/delete", async (req, res) => {
 
 module.exports = router
 
-//prueba
+//
