@@ -78,7 +78,7 @@ Utiliza el siguiente comando:
 3. Crea un archivo .env en la raíz del proyecto y agrega tus variables de entorno. Aquí tienes un ejemplo de las variables que puedes necesitar:
 
 
-MONGO_URI=<tu_uri_de_mongodb>
+MONGO_URI=<uri_de_mongodb>
 FIREBASE_TYPE=<tipo>
 FIREBASE_PROJECT_ID=<id_del_proyecto>
 FIREBASE_PRIVATE_KEY_ID=<id_de_la_clave_privada>
