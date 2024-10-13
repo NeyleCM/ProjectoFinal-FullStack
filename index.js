@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 const dbConnection = require("./config/db.js");
-const productRoutes = require("./routes/productRoutes.js");
-const authRoutes = require("./routes/authRoutes.js")
 const path = require("path")
 //const admin = require("firebase-admin")
 const serviceAccount = require("./config/serviceAccount.js")
@@ -12,8 +10,10 @@ require("dotenv").config()
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
-})
+});
 
+const productRoutes = require("./routes/productRoutes.js");
+const authRoutes = require("./routes/authRoutes.js")
 // Middleware
 //app.use(cors());  
 app.use(express.json());

@@ -75,7 +75,6 @@ const loginTemplate = () => {
             <main>
                 <section>
                     <h1>Iniciar Sesión</h1>
-                    <form id="loginForm">
                         <div>
                             <label for="email">Correo Electrónico</label>
                             <input type="email" id="email" name="email" placeholder="ejemplo@gmail.com" required />
@@ -86,7 +85,6 @@ const loginTemplate = () => {
                         </div>
                         <div id="mensaje"></div>
                         <button id="loginButton">Iniciar Sesión</button>
-                    </form>
                 </section>
             </main>
             <script type="module" src="/configLogin.js"></script>
