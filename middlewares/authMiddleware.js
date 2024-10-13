@@ -3,7 +3,6 @@ const adminFirebase = require('firebase-admin'); //Verificar los tokens de auten
 //Verificar si el usuario tiene un token de autenticación válido
 const authMiddleware = async (req, res, next) => {
     try {
-        //const token = req.headers.authorization?.split(" ")[1];//Divide la cadena en dos partes y extrae solo el token, (?.) operador de encadenamiento para evitar errores
         const tokenCokie = req.cookies.token
         const decodedToken = await adminFirebase.auth().verifyIdToken(tokenCokie);//verifyIdToken decodifica y valida el token. Si es válido devuelve el token decodificado con información del usuario autenticado
         
@@ -26,3 +25,4 @@ const authMiddleware = async (req, res, next) => {
 };
 
 module.exports = authMiddleware;
+//
