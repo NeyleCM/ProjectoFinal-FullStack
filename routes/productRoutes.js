@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
-const { productsTemplate, productIdTemplate} = require("../controllers/productController.js")
-let prueba;
+const { productsTemplate, productIdTemplate, loginTemplate} = require("../controllers/productController.js")
+const { auth } = require("firebase-admin")
 
 router.get("/", (req, res) => res.redirect("/products"))
 
@@ -61,6 +61,25 @@ router.get("/products/accesorios", async (req, res) => {
      }
  })
 
+router.get("/products/login", (req, res) => {
+    const template = loginTemplate()
+    res.status(200).send(template)
+})
+
+router.post("/products/login", async (req, res) => {
+    try {
+        const { idToken } = req.body
+        await auth.verifyToken(idToken)
+        res.cookie("token", idToken, {httpOnly: true, secure: false})
+        res.json({success: true})
+
+    } catch (error) {
+        console.error(error)
+        res.json({error: "Toekn no valido"})
+    }
+})
+
+
 router.get("/products/:productId", async (req, res) => {
     try {
         const _id = req.params.productId;
@@ -71,8 +90,9 @@ router.get("/products/:productId", async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(500).json({message: "Error to get a producto by id"})
-    }
-})
+    }    
+})    
+
 
 
 module.exports = router

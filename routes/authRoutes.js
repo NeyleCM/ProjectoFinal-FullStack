@@ -60,24 +60,6 @@ router.get("/dashboard/accesorios", async (req, res) => {
     }
 })
 
-// Formulario de login
-router.get("/dashboard/login", (req, res) => {
-    const template = loginTemplate();
-    res.status(200).send(template);
-});
-
-
-router.get("/dashboard/login", async (req, res) => {
-    try {
-        const products = await Product.find();
-        const template = authDasboardCntr("Dashboard", products) //falta crear el template de login
-        res.status(200).send(template)
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({message: "Error to get a producto by id"})
-    }
-})
-
 router.get("/dashboard/new", async (req, res) => {
     try {
         const template = createProductTemplate();
@@ -170,7 +152,7 @@ router.post("/dashboard/:productId", async (req, res) => {
             size: haveSize,
             price: req.body.price || this.price
         }
-        await Product.findOneAndUpdate({_id} , updateProduct, { new: true })
+        await Product.findOneAndUpdate({_id: _id} , updateProduct, { new: true })
         console.log(updateProduct)
         const updated = await Product.updateOne()
         res.redirect("/dashboard")
@@ -181,7 +163,7 @@ router.post("/dashboard/:productId", async (req, res) => {
 })
 
 // Eliminar un producto. Utilizamos el metodo post ya que el metodo delete no esta soportado por HTML5
-router.post("/dashboard/:productId/delete", async (req, res) => {
+router.delete("/dashboard/:productId/delete", async (req, res) => {
     try {
         const id = req.params.productId;
         await Product.findByIdAndDelete(id);

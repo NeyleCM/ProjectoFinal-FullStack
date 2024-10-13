@@ -5,7 +5,7 @@ const navTemplate = `
         <a href="/products/pantalones">Pantalones</a>
         <a href="/products/zapatos">Zapatos</a>
         <a href="/products/accesorios">Accesorios</a>
-        <a href="/dashboard/login">Login</a>
+        <a href="/products/login">Login</a>
     </nav>
 `
 const doctype = `
@@ -68,7 +68,36 @@ const productIdTemplate = (obj) => {
     return template
 }
 
+const loginTemplate = () => {
+    const template = `
+        ${doctype}
+        <body>
+            <main>
+                <section>
+                    <h1>Iniciar Sesión</h1>
+                    <form id="loginForm">
+                        <div>
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="ejemplo@gmail.com" required />
+                        </div>
+                        <div>
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password" placeholder="Introduce tu contraseña" required />
+                        </div>
+                        <div id="mensaje"></div>
+                        <button id="loginButton">Iniciar Sesión</button>
+                    </form>
+                </section>
+            </main>
+            <script type="module" src="/configLogin.js"></script>
+        </body>
+        </html>
+    `;
+    return template;
+}
+
 module.exports = {
     productsTemplate,
-    productIdTemplate
+    productIdTemplate,
+    loginTemplate
 }
