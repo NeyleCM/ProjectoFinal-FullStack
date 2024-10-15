@@ -79,7 +79,7 @@ router.post("/login", async (req, res) => {
 
     } catch (error) {
         console.error(error)
-        res.json({error: "Toekn no valido"})
+        res.json({error: "Token no valido"})
     }
 })
 
