@@ -37,3 +37,5 @@ app.use(errorHandler);
 
 app.listen(PORT, () => console.log
 (`La aplicación está escuchando en el puerto http://localhost:${PORT}`))
+
+module.exports = app;
