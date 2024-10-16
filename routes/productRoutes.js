@@ -3,6 +3,7 @@ const router = express.Router()
 const Product = require("../models/Product.js")
 const { productsTemplate, productIdTemplate, loginTemplate} = require("../controllers/productController.js")
 const admin = require("firebase-admin")
+const authMiddleware = require("../middlewares/authMiddleware.js")
 const auth = admin.auth() 
 const prodType = ["camisetas, pantalones, zapatos, accesorios"]
 
@@ -70,7 +71,7 @@ router.get("/products/login", (req, res) => {
 
 })
 
-router.post("/login", async (req, res) => {
+router.post("/login", authMiddleware, async (req, res) => {
     const { idToken } = req.body
     try {
         await auth.verifyIdToken(idToken)

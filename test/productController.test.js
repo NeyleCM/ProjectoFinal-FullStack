@@ -1,3 +1,4 @@
+
 const request = require("supertest")
 const app = require("../index.js")
 const agent = request.agent(app)
@@ -38,7 +39,6 @@ describe("Testing authRoutes", () => {
         await(app).get("/dashboard").expect(200)
     })
 })
-
 /*
 describe("Testing authRoutes", () => {
     const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhkOWJlZmQzZWZmY2JiYzgyYzgzYWQwYzk3MmM4ZWE5NzhmNmYxMzciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdGJyZWFrMiIsImF1ZCI6InByb2plY3RicmVhazIiLCJhdXRoX3RpbWUiOjE3Mjg5Mzc0NDEsInVzZXJfaWQiOiJ6MmNNQmRMMW5QV3hRVHlhOWFab2V5NXhuS2cxIiwic3ViIjoiejJjTUJkTDFuUFd4UVR5YTlhWm9leTV4bktnMSIsImlhdCI6MTcyODkzNzQ0MSwiZXhwIjoxNzI4OTQxMDQxLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsicHJ1ZWJhQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.jSIloZ545STwHU8d6eQp2NKkTd8HkhQMZjBQrrU1AxBhckM78YbvsE5SjM-pqoU9NUY23FkLhaBw32GS7wJpsnCQRW0ylmq0UEkbnHJB27UYNchbT8xVZiCoLEJIb0HuDDopvgAUmhWVGA6MrWl1UcpzBRosQmej9E36OkIh_qXNwuW8Ua4Rzzc59DnxOP2FS0S6tW4uT1tEKjaK7M2JjYR1NuUUqLelhDComjiykHnvDBL1AuIUwMHTxX-rpp2TVsMcTTw8xs1xIpZWOmECqSflcu-X1gFuh168UKAbKWAnFqYCQqCKuSqpO5iJxKfqNkRjrqOhEecgF96zfKnqpw";
