@@ -30,7 +30,7 @@ dbConnection();
 
 // Rutas
 app.use("/", productRoutes);
-app.use("/dashboard", authMiddleware, authRoutes);
+app.use("/", authMiddleware, authRoutes);
 
 // Ruta para manejar 404 (cuando no se encuentra una página)
 app.use((req, res) => {

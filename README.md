@@ -101,6 +101,8 @@ Para desplegar la aplicación en un entorno de producción, puedes utilizar Rend
 
 - `https://dashboard.render.com/`
 
+<<<<<<< HEAD
+=======
 
 ## Login
 Para poder inicar sesion y entrar en el login es necesario entrar con el usuario prueba@gmail.com y contraseña 123456
@@ -112,3 +114,4 @@ GET /dashboard: Endpoint para obtener todos los productos.
 GET /dashboard/:_id: Endpoint para obtener un producto específico por su ID.
 PUT /dashboard/:_id: Endpoint para actualizar un producto existente. Permite actualizar el nombre, descripción, precio, categoría y talla.
 DELETE /dashboard/:_id: Endpoint para eliminar un producto por su ID.
+>>>>>>> 8101a00971e3a33358930bd89b519dc5b1ed0356
