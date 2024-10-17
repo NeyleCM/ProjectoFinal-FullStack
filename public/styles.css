@@ -137,6 +137,28 @@ main section button:hover {
     border: none;
 }
 
-.productid {
+.productid{
     background-color: white;
+    border: solid black 1px;
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 150px;
+    width: 60%;
+    padding: 50px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.productid h1{
+    font-size: 40px;
+}
+
+.productid img {
+    height: 300px;
+}
+
+.productid div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
