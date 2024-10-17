@@ -21,6 +21,7 @@ const doctype =
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Productos</title>
             <link rel="stylesheet" href="/styles.css">
+            <link rel="stylesheet" href="/style.css">
         </head>
 `
     //<link rel="stylesheet" href="../public/styles.css">
@@ -32,13 +33,13 @@ const authDasboardCntr = (name, obj) => {
                 ${navTemplate}  
                 <main>
                     <section>
-                        <h1>${name}</h2>
+                        <h1>${name}</h1>
                         <ol>
                             ${obj.map(element => {
                                 const templateElement = 
                                 `
                                     <li>
-                                        <h2>${element.name}
+                                        <h2>${element.name}</h2>
                                         <img src=${element.image} />
                                         <a href="/dashboard/${element._id}">Ver</a>
                                     </li>
@@ -61,7 +62,7 @@ const authIdTemplate = (obj) => {
             ${navTemplate}
                 <main>
                     <section>
-                        <h1>${obj.name}</h2>
+                        <h1>${obj.name}</h1>
                         <img src="${obj.image}"/>
                         <p>${obj.description}</p>
                         <span>${obj.price}€</span>

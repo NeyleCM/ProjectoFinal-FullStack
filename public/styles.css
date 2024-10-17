@@ -69,5 +69,54 @@ nav a{
 
 
 body{
-    background-color: #a3a3a3;
+    background-color: #cccccc;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+ol {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px;
+    gap: 30px;
+}
+
+li{
+    height: 250px;
+    width: 250px;
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+li img{
+    height: 150px;
+}
+
+li h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+main a{
+    background-color: #7fd1f1;
+    border-radius: 10px;
+    padding: 5px 8px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+main a:hover{
+    background-color: #4ecdff;
 }
