@@ -18,6 +18,7 @@ const doctype = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 `
 const productsTemplate = (name, obj) => {
@@ -33,7 +34,7 @@ const productsTemplate = (name, obj) => {
                             const templateElement = 
                             `
                                 <li>
-                                    <h2>${element.name} </h2>
+                                    <h2>${element.name}</h2>
                                     <img src=${element.image} />
                                     <a href="/products/${element._id}">Ver</a>
                                 </li>

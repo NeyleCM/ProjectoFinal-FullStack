@@ -15,8 +15,6 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
 
-
-
 const productRoutes = require("./routes/productRoutes.js");
 const authRoutes = require("./routes/authRoutes.js")
 const PORT = process.env.PORT || 3000;
