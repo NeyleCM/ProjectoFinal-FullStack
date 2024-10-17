@@ -102,9 +102,8 @@ Para desplegar la aplicación en un entorno de producción, puedes utilizar Rend
 - `https://dashboard.render.com/`
 
 
-
-
-
+## Login
+Para poder inicar sesion y entrar en el login es necesario entrar con el usuario prueba@gmail.com y contraseña 123456
 
 
 ## Endpoints de la API
