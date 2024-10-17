@@ -56,7 +56,7 @@ const productIdTemplate = (obj) => {
         <body>
             <main>
                 ${navTemplate}
-                <section>
+                <section class="productid">
                     <h1>${obj.name}</h1>
                     <img src="${obj.image}"/>
                     <p>${obj.description}</p>

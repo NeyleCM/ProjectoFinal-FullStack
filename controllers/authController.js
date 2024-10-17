@@ -61,17 +61,19 @@ const authIdTemplate = (obj) => {
             <body>
             ${navTemplate}
                 <main>
-                    <section>
+                    <section class="productid">
                         <h1>${obj.name}</h1>
                         <img src="${obj.image}"/>
                         <p>${obj.description}</p>
                         <span>${obj.price}€</span>
                         <p>Categoria: ${obj.category}</p>
                         <span>Tallas disponibles: ${obj.size.map(element => element).join(" | ")}</span>
+                        <div>
                         <a href="/dashboard/${obj._id}/edit">Editar</a>
-                        <form action="/dashboard/${obj._id}/delete" method="post">
-                            <button type="submit">Eliminar</button>
-                        </form>
+                            <form action="/dashboard/${obj._id}/delete" method="post">
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        </div>
                     </section>
                 </main>
             </body>
