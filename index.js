@@ -11,14 +11,8 @@ const serviceAccount = require("./config/serviceAccount.js")
 const dbConnection = require("./config/db.js");
 const cookieParser = require("cookie-parser")
 
-/*admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
-*/
-
 admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    databaseURL: process.env.DATABASE_URL // Esto es donde usas la URL de tu base de datos
+    credential: admin.credential.cert(serviceAccount)
 });
 
 const productRoutes = require("./routes/productRoutes.js");

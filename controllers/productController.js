@@ -17,7 +17,7 @@ const doctype = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 `
 const productsTemplate = (name, obj) => {
@@ -27,13 +27,13 @@ const productsTemplate = (name, obj) => {
             <main>
                 ${navTemplate}
                 <section>
-                    <h1>${name}</h2>
+                    <h1>${name}</h1>
                     <ol>
                         ${obj.map(element => {
                             const templateElement = 
                             `
                                 <li>
-                                    <h2>${element.name}
+                                    <h2>${element.name}</h2>
                                     <img src=${element.image} />
                                     <a href="/products/${element._id}">Ver</a>
                                 </li>
@@ -56,7 +56,7 @@ const productIdTemplate = (obj) => {
             <main>
                 ${navTemplate}
                 <section>
-                    <h1>${obj.name}</h2>
+                    <h1>${obj.name}</h1>
                     <img src="${obj.image}"/>
                     <p>${obj.description}</p>
                     <span>${obj.price}€</span>
