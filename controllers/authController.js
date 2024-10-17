@@ -1,13 +1,15 @@
 const navTemplate = 
 `
     <nav>
-        <a href="/dashboard">Productos</a>
-        <a href="/dashboard/camisetas">Camisetas</a>
-        <a href="/dashboard/pantalones">Pantalones</a>
-        <a href="/dashboard/zapatos">Zapatos</a>
-        <a href="/dashboard/accesorios">Accesorios</a>
-        <a href="/dashboard/new">New Product</a>
-        <a href="/dashboard/logout">Logout</a>
+        <div>
+            <a href="/dashboard">Productos</a>
+            <a href="/dashboard/camisetas">Camisetas</a>
+            <a href="/dashboard/pantalones">Pantalones</a>
+            <a href="/dashboard/zapatos">Zapatos</a>
+            <a href="/dashboard/accesorios">Accesorios</a>
+            <a href="/dashboard/new">New Product</a>
+            <a href="/dashboard/logout">Logout</a>
+        </div>
     </nav>
 `
 

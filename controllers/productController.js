@@ -1,11 +1,13 @@
 const navTemplate = `    
     <nav>
-        <a href="/products">Productos</a>
-        <a href="/products/camisetas">Camisetas</a>
-        <a href="/products/pantalones">Pantalones</a>
-        <a href="/products/zapatos">Zapatos</a>
-        <a href="/products/accesorios">Accesorios</a>
-        <a href="/products/login">Login</a>
+        <div>
+            <a href="/products">Productos</a>
+            <a href="/products/camisetas">Camisetas</a>
+            <a href="/products/pantalones">Pantalones</a>
+            <a href="/products/zapatos">Zapatos</a>
+            <a href="/products/accesorios">Accesorios</a>
+            <a href="/products/login">Login</a>
+        </div>
     </nav>
 `
 const doctype = `
@@ -15,7 +17,7 @@ const doctype = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-    <link rel="stylesheet" href="../public/styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 `
 const productsTemplate = (name, obj) => {
