@@ -3,7 +3,7 @@ const path = require("path")
 const admin = require("firebase-admin")
 const app = express();
 require("dotenv").config()
-const cors = require('cors');
+//const cors = require('cors');
 
 const authMiddleware = require("./middlewares/authMiddleware.js")
 const errorHandler = require('./middlewares/errorHandler.js');//Middleware global
@@ -19,7 +19,7 @@ const productRoutes = require("./routes/productRoutes.js");
 const authRoutes = require("./routes/authRoutes.js")
 const PORT = process.env.PORT || 3000;
 // Middleware
-app.use(cors());  
+//app.use(cors());  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")))
@@ -30,8 +30,7 @@ dbConnection();
 
 // Rutas
 app.use("/", productRoutes);
-app.use("/", authMiddleware, authRoutes);
-app.use((req, res) => res.json({"Error 404": "Page not found"}))
+app.use("/dashboard", authMiddleware, authRoutes);
 
 // Ruta para manejar 404 (cuando no se encuentra una página)
 app.use((req, res) => {
@@ -44,4 +43,4 @@ app.use(errorHandler);
 app.listen(PORT, () => console.log
 (`La aplicación está escuchando en el puerto http://localhost:${PORT}`))
 
-module.exports = app;
+//module.exports = app;

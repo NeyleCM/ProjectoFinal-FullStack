@@ -71,7 +71,7 @@ router.get("/products/login", (req, res) => {
 
 })
 
-router.post("/login", authMiddleware, async (req, res) => {
+router.post("/login", async (req, res) => {
     const { idToken } = req.body
     try {
         await auth.verifyIdToken(idToken)
@@ -83,7 +83,6 @@ router.post("/login", authMiddleware, async (req, res) => {
         res.json({error: "Token no valido"})
     }
 })
-
 
 router.get("/products/:productId", async (req, res) => {
     try {

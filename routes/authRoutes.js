@@ -78,7 +78,6 @@ router.get("/dashboard/new", authMiddleware, async (req, res) => {
 // Crear un nuevo producto
 router.post("/dashboard", authMiddleware, async (req, res) => {
     try {
-        //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         const haveSize = []
 
         sizeArray.forEach(element => {
