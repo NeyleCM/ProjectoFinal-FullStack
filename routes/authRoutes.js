@@ -1,12 +1,15 @@
 const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.js")
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate, loginTemplate } = require("../controllers/authController.js")
 const authMiddleware = require("../middlewares/authMiddleware.js")
 const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
 
 // Mostrar todos los productos en el Dashboard
-router.get("/dashboard", authMiddleware, async (req, res) => {
+
+router.get("/dashboard", /*authMiddleware,*/ async (req, res) => {
     try {
         const products = await Product.find();
         const template = authDasboardCntr("Dashboard", products)
@@ -38,6 +41,7 @@ router.get("/dashboard/pantalones", async (req, res) => {
         res.status(500).json({message: "Error to get pantalones"})
     }
 })
+
 
 router.get("/dashboard/zapatos", async (req, res) => {
     try {
@@ -82,7 +86,7 @@ router.post("/dashboard", authMiddleware, async (req, res) => {
                 haveSize.push(element)
             }
         })
-        const newProduct = await Product.create({
+        const newProduct = new Product({
             name: req.body.name,
             description: req.body.description,
             image: req.body.image,
@@ -90,7 +94,7 @@ router.post("/dashboard", authMiddleware, async (req, res) => {
             size: haveSize,
             price: req.body.price
         })
-        const product = await Product.create(newProduct)
+        await newProduct.save()
         //res.status(201).json(product)
         res.redirect("/dashboard")
     } catch (error) {
@@ -116,8 +120,16 @@ router.get("/dashboard/:productId", authMiddleware, async (req, res) => {
 router.get("/dashboard/:productId/edit", authMiddleware, async (req, res) => {
     try {
         const id = req.params.productId;
+         // Validar que el ID sea un ObjectId válido
+         if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ message: "Invalid product ID" });
+        }
         const product = await Product.findById(id);
-        const template = editProductTemplate(id)
+         //En caso de que el producto no se encuentre
+         if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        const template = editProductTemplate(product)
         res.status(200).send(template);
     } catch (error) {
         console.log(error);
@@ -126,7 +138,7 @@ router.get("/dashboard/:productId/edit", authMiddleware, async (req, res) => {
 })
 
 // Actualizar un producto
-router.post("/dashboard/:productId", authMiddleware, async (req, res) => {
+router.put("/dashboard/:productId", authMiddleware, async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         console.log(req.body);
@@ -146,16 +158,15 @@ router.post("/dashboard/:productId", authMiddleware, async (req, res) => {
         // Objeto para actualizar el producto
         const updateProduct = {
             ... product._doc,    
-            name: req.body.name || this.name,
-            description: req.body.description || this.description,
-            image: req.body.image || this.image,
-            category: req.body.category || this.category,
-            size: haveSize,
-            price: req.body.price || this.price
+            name: req.body.name || product.name,
+            description: req.body.description || product.description,
+            image: req.body.image || product.image,
+            category: req.body.category || product.category,
+            size: haveSize.length ? haveSize : product.size, // Mantener las tallas existentes si no se seleccionan nuevas
+            price: req.body.price || product.price
         }
         await Product.findOneAndUpdate({_id: _id} , updateProduct, { new: true })
         console.log(updateProduct)
-        const updated = await Product.updateOne()
         res.redirect("/dashboard")
     } catch (error) {
         console.log(error)
