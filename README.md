@@ -101,15 +101,3 @@ Para desplegar la aplicación en un entorno de producción, puedes utilizar Rend
 
 - `https://dashboard.render.com/`
 
-
-
-
-
-
-
-## Endpoints de la API
-POST /dashboard: Endpoint para crear un nuevo producto.
-GET /dashboard: Endpoint para obtener todos los productos.
-GET /dashboard/:_id: Endpoint para obtener un producto específico por su ID.
-PUT /dashboard/:_id: Endpoint para actualizar un producto existente. Permite actualizar el nombre, descripción, precio, categoría y talla.
-DELETE /dashboard/:_id: Endpoint para eliminar un producto por su ID.
