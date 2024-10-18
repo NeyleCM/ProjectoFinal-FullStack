@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate, loginTemplate } = require("../controllers/authController.js")
 const authMiddleware = require("../middlewares/authMiddleware.js")
-const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
+const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", "Única", 39, 40, 41, 42, 43, 44]
 
 // Mostrar todos los productos en el Dashboard
 
@@ -78,6 +78,7 @@ router.get("/dashboard/new", authMiddleware, async (req, res) => {
 // Crear un nuevo producto
 router.post("/dashboard", authMiddleware, async (req, res) => {
     try {
+        //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         const haveSize = []
 
         sizeArray.forEach(element => {
@@ -137,7 +138,7 @@ router.get("/dashboard/:productId/edit", authMiddleware, async (req, res) => {
 })
 
 // Actualizar un producto
-router.put("/dashboard/:productId", authMiddleware, async (req, res) => {
+router.post("/dashboard/:productId", authMiddleware, async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         console.log(req.body);
@@ -174,7 +175,7 @@ router.put("/dashboard/:productId", authMiddleware, async (req, res) => {
 })
 
 // Eliminar un producto. Utilizamos el metodo post ya que el metodo delete no esta soportado por HTML5
-router.delete("/dashboard/:productId/delete", authMiddleware, async (req, res) => {
+router.post("/dashboard/:productId/delete", authMiddleware, async (req, res) => {
     try {
         const id = req.params.productId;
         await Product.findByIdAndDelete(id);
@@ -187,4 +188,3 @@ router.delete("/dashboard/:productId/delete", authMiddleware, async (req, res) =
 })
 
 module.exports = router
-
