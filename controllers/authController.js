@@ -68,10 +68,11 @@ const authIdTemplate = (obj) => {
                         <p>Categoria: ${obj.category}</p>
                         <span>Tallas disponibles: ${obj.size.map(element => element).join(" | ")}</span>
                         <div>
-                        <a href="/dashboard/${obj._id}/edit">Editar</a>
+                            <a href="/dashboard/${obj._id}/edit">Editar</a>
                             <form action="/dashboard/${obj._id}/delete" method="post">
                                 <button type="submit">Eliminar</button>
                             </form>
+                            <a href="/dashboard">Volver</a>
                         </div>
                     </section>
                 </main>
