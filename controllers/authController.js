@@ -21,6 +21,7 @@ const doctype =
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Productos</title>
             <link rel="stylesheet" href="/styles.css">
+            <link rel="stylesheet" href="/style.css">
         </head>
 `
     //<link rel="stylesheet" href="../public/styles.css">
@@ -90,15 +91,22 @@ const createProductTemplate = () => {
                 <main> 
                     <h1>Crear un nuevo producto</h1>
                     <form action="/dashboard" method="POST">
+                        <div class="divLabel">
                         <label for="name">Nombre del producto:</label>
                         <input type="text" id="name" name="name" required>
-                        
+                        </div>
+
+                        <div class="divLabel">
                         <label for="description">Descripción:</label>
                         <textarea id="description" name="description" required></textarea>
-                        
+                        </div>
+
+                        <div class="divLabel">
                         <label for="price">Precio:</label>
                         <input type="number" id="price" name="price" required>
-                        
+                        </div>
+
+                        <div class="divLabel">
                         <label for="category">Categoría:</label>
                         <select id="category" name="category" required>
                             <option value="camisetas">Camisetas</option>
@@ -106,15 +114,21 @@ const createProductTemplate = () => {
                             <option value="zapatos">Zapatos</option>
                             <option value="accesorios">Accesorios</option>
                         </select>
-                        
+                        </div>
+
+                        <div class="divLabel">
                         <label for="image">URL de la imagen:</label>
                         <input type="url" id="image" name="image" required>
+                        </div>
 
-
+                        <div class="divLabel">
                         <label for="size">Talla:</label>
                         <div id="sizeController"></div>
+                        </div>
 
+                        <div class="buttonForm">
                         <button type="submit">Crear producto</button>
+                        </div>
                         
                     </form>
                 </main>
@@ -133,7 +147,7 @@ const editProductTemplate = (product) => {
             <body>
             ${navTemplate}
                 <main>
-                    <form action="/dashboard/${product._id}" method="POST">
+                    <form action="/dashboard/${product._id}" method="POST" class="editForm">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" name="name" value=""> 
                         

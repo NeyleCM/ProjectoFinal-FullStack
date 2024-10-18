@@ -17,6 +17,7 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
 
+
 const productRoutes = require("./routes/productRoutes.js");
 const authRoutes = require("./routes/authRoutes.js")
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ dbConnection();
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(docs))
 app.use("/", productRoutes);
 app.use("/", authMiddleware, authRoutes);
+
 
 // Ruta para manejar 404 (cuando no se encuentra una página)
 app.use((req, res) => {

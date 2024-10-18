@@ -77,6 +77,7 @@ router.get("/dashboard/new", async (req, res) => {
 // Crear un nuevo producto
 router.post("/dashboard", async (req, res) => {
     try {
+        //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         const haveSize = []
 
         sizeArray.forEach(element => {
@@ -174,6 +175,7 @@ router.put("/dashboard/:productId", async (req, res) => {
 
 // Eliminar un producto. Utilizamos el metodo post ya que el metodo delete no esta soportado por HTML5
 router.delete("/dashboard/:productId/delete", async (req, res) => {
+
     try {
         const id = req.params.productId;
         await Product.findByIdAndDelete(id);
@@ -186,4 +188,3 @@ router.delete("/dashboard/:productId/delete", async (req, res) => {
 })
 
 module.exports = router
-
