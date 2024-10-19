@@ -174,7 +174,7 @@ router.put("/dashboard/:productId", async (req, res) => {
 })
 
 // Eliminar un producto. Utilizamos el metodo post ya que el metodo delete no esta soportado por HTML5
-router.post("/dashboard/:productId/delete", async (req, res) => {
+router.delete("/dashboard/:productId/delete", async (req, res) => {
 
     try {
         const id = req.params.productId;

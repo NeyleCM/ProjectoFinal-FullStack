@@ -7,7 +7,7 @@ const changeSizeType = () => {
     if(catSelected != "zapatos"){
         console.log("Categoria no zapatos")
         return `  
-        <input type="checkbox" class="checkbox" id="xs" name="xs">
+        <input type="checkbox" class="checkbox" id="unica" name="unica">
         <label for="UNICA">ÚNICA</label>
 
         <input type="checkbox" class="checkbox" id="xs" name="xs">
