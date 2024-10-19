@@ -80,9 +80,10 @@ router.post("/login", async (req, res) => {
 
     } catch (error) {
         console.error(error)
-        res.json({error: "Token no valido"})
+        res.json({error: "Invalid token"})
     }
 })
+
 
 router.get("/products/:productId", async (req, res) => {
     try {

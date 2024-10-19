@@ -10,6 +10,8 @@ const errorHandler = require('./middlewares/errorHandler.js');//Middleware globa
 const serviceAccount = require("./config/serviceAccount.js")
 const dbConnection = require("./config/db.js");
 const cookieParser = require("cookie-parser")
+const swaggerUI = require("swagger-ui-express")
+const docs = require("./docs/index.js")
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -30,6 +32,7 @@ app.use(cookieParser())
 dbConnection();
 
 // Rutas
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(docs))
 app.use("/", productRoutes);
 app.use("/", authMiddleware, authRoutes);
 

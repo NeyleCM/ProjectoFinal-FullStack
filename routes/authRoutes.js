@@ -3,13 +3,12 @@ const router = express.Router()
 const Product = require("../models/Product.js")
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
-const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate, loginTemplate } = require("../controllers/authController.js")
-const authMiddleware = require("../middlewares/authMiddleware.js")
+const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate } = require("../controllers/authController.js")
 const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
 
 // Mostrar todos los productos en el Dashboard
 
-router.get("/dashboard", /*authMiddleware,*/ async (req, res) => {
+router.get("/dashboard", async (req, res) => {
     try {
         const products = await Product.find();
         const template = authDasboardCntr("Dashboard", products)
@@ -65,7 +64,7 @@ router.get("/dashboard/accesorios", async (req, res) => {
     }
 })
 
-router.get("/dashboard/new", authMiddleware, async (req, res) => {
+router.get("/dashboard/new", async (req, res) => {
     try {
         const template = createProductTemplate();
         res.status(200).send(template); //Aqui hay que hacer un formulario donde realizamos el nuevo producto
@@ -76,7 +75,7 @@ router.get("/dashboard/new", authMiddleware, async (req, res) => {
 })
 
 // Crear un nuevo producto
-router.post("/dashboard", authMiddleware, async (req, res) => {
+router.post("/dashboard", async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         const haveSize = []
@@ -104,7 +103,7 @@ router.post("/dashboard", authMiddleware, async (req, res) => {
 })
 
 // Ver detalles de un producto específico en el Dashboard
-router.get("/dashboard/:productId", authMiddleware, async (req, res) => {
+router.get("/dashboard/:productId", async (req, res) => {
     try {
         const id = req.params.productId;
         const product = await Product.findById(id);
@@ -117,7 +116,7 @@ router.get("/dashboard/:productId", authMiddleware, async (req, res) => {
 })
 
 // Mostrar el formulario para editar un producto
-router.get("/dashboard/:productId/edit", authMiddleware, async (req, res) => {
+router.get("/dashboard/:productId/edit", async (req, res) => {
     try {
         const id = req.params.productId;
          // Validar que el ID sea un ObjectId válido
@@ -138,7 +137,7 @@ router.get("/dashboard/:productId/edit", authMiddleware, async (req, res) => {
 })
 
 // Actualizar un producto
-router.post("/dashboard/:productId", authMiddleware, async (req, res) => {
+router.post("/dashboard/:productId", async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         console.log(req.body);
@@ -175,7 +174,8 @@ router.post("/dashboard/:productId", authMiddleware, async (req, res) => {
 })
 
 // Eliminar un producto. Utilizamos el metodo post ya que el metodo delete no esta soportado por HTML5
-router.post("/dashboard/:productId/delete", authMiddleware, async (req, res) => {
+router.post("/dashboard/:productId/delete", async (req, res) => {
+
     try {
         const id = req.params.productId;
         await Product.findByIdAndDelete(id);
@@ -186,5 +186,16 @@ router.post("/dashboard/:productId/delete", authMiddleware, async (req, res) => 
         res.status(500).json({ message: "Error to delete product" });
     }
 })
+
+router.post("/dashboard/logout", async (req, res) => {
+    try {
+        // Limpiar la cookie del token de autenticación
+        res.clearCookie("token", { httpOnly: true, secure: false });
+        res.redirect("/products");
+    } catch (error) {
+        console.error("Error logging out:", error);
+        res.status(500).json({ message: "Error logging out:" });
+    }
+});
 
 module.exports = router

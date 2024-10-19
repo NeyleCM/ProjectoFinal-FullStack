@@ -8,22 +8,25 @@ const changeSizeType = () => {
         console.log("Categoria no zapatos")
         return `  
         <input type="checkbox" class="checkbox" id="xs" name="xs">
-        <label for="xs">XS</label>
+        <label for="UNICA">ÚNICA</label>
+
+        <input type="checkbox" class="checkbox" id="xs" name="xs">
+        <label for="XS">XS</label>
 
         <input type="checkbox" class="checkbox" id="s" name="s">
-        <label for="s">S</label>
+        <label for="S">S</label>
 
         <input type="checkbox" class="checkbox" id="m" name="m">
-        <label for="m">M</label>
+        <label for="M">M</label>
 
         <input type="checkbox" class="checkbox" id="l" name="l">
-        <label for="l">L</label>
+        <label for="L">L</label>
 
         <input type="checkbox" class="checkbox" id="xl" name="xl">
-        <label for="xl">XL</label>
+        <label for="XL">XL</label>
 
         <input type="checkbox" class="checkbox" id="xxl" name="xxl">
-        <label for="xxl">XXL</label>
+        <label for="XXL">XXL</label>
         `
     }
     else{

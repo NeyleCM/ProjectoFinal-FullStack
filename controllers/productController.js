@@ -63,6 +63,7 @@ const productIdTemplate = (obj) => {
                     <span>${obj.price}€</span>
                     <p>Categoria: ${obj.category}</p>
                     <span>Tallas disponibles: ${obj.size.map(element => element).join(" | ")}</span>
+                    <a href="/products">Volver</a>
                 </section>
             </main>
         </body>
