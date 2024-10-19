@@ -137,7 +137,7 @@ router.get("/dashboard/:productId/edit", async (req, res) => {
 })
 
 // Actualizar un producto
-router.post("/dashboard/:productId", async (req, res) => {
+router.put("/dashboard/:productId", async (req, res) => {
     try {
         //console.log([req.body.xs.id, req.body.s, req.body.m, req.body.l, req.body.xl, req.body.xxl])
         console.log(req.body);
