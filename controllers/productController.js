@@ -76,8 +76,8 @@ const loginTemplate = () => {
         ${doctype}
         <body>
             <main>
-                <section>
-                    <h1>Iniciar Sesión</h1>
+                <h1>Iniciar Sesión</h1>
+                    <section>
                         <div>
                             <label for="email">Correo Electrónico</label>
                             <input type="email" id="email" name="email" placeholder="ejemplo@gmail.com" required />
@@ -88,7 +88,7 @@ const loginTemplate = () => {
                         </div>
                         <div id="mensaje"></div>
                         <button id="loginButton">Iniciar Sesión</button>
-                </section>
+                    </section>
             </main>
             <script type="module" src="/configLogin.js"></script>
         </body>

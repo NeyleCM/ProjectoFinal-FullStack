@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate, loginTemplate } = require("../controllers/authController.js")
 const authMiddleware = require("../middlewares/authMiddleware.js")
-const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", "Única", 39, 40, 41, 42, 43, 44]
+const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
 
 // Mostrar todos los productos en el Dashboard
 
