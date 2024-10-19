@@ -149,7 +149,7 @@ const editProductTemplate = (product) => {
             <body>
             ${navTemplate}
                 <main>
-                    <form action="/dashboard/${product._id}" method="POST" class="editForm">
+                    <form action="/dashboard/${product._id}?_method=PUT" method="POST" "class="editForm">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" name="name" value=""> 
                         

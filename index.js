@@ -1,6 +1,7 @@
 const express = require("express");
-const path = require("path")
-const admin = require("firebase-admin")
+const path = require("path");
+const admin = require("firebase-admin");
+const methodOverride = require("method-override");
 const app = express();
 require("dotenv").config()
 //const cors = require('cors');
@@ -31,6 +32,7 @@ app.use(cookieParser())
 // Conexión a la base de datos
 dbConnection();
 
+app.use(methodOverride('_method')) //soportar PUT y DELETE en formularios
 // Rutas
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(docs))
 app.use("/", productRoutes);
