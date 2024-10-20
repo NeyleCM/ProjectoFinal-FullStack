@@ -3,7 +3,7 @@ const router = express.Router()
 const Product = require("../models/Product.js")
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
-const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate, loginTemplate } = require("../controllers/authController.js")
+const { authDasboardCntr, authIdTemplate, createProductTemplate, editProductTemplate } = require("../controllers/authController.js")
 const sizeArray = ["xs", "s", "m", "l", "xl", "xxl", 39, 40, 41, 42, 43, 44]
 
 // Mostrar todos los productos en el Dashboard
@@ -197,6 +197,5 @@ router.post("/dashboard/logout", async (req, res) => {
         res.status(500).json({ message: "Error logging out:" });
     }
 });
-
 
 module.exports = router

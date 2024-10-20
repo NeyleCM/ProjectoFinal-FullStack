@@ -8,7 +8,9 @@ const navTemplate =
             <a href="/dashboard/zapatos">Zapatos</a>
             <a href="/dashboard/accesorios">Accesorios</a>
             <a href="/dashboard/new">New Product</a>
-            <a href="/dashboard/logout">Logout</a>
+            <form action="/dashboard/logout" method="POST">
+                <button type="submit">Logout</button>
+            </form>
         </div>
     </nav>
 `
@@ -68,8 +70,8 @@ const authIdTemplate = (obj) => {
                         <span>${obj.price}€</span>
                         <p>Categoria: ${obj.category}</p>
                         <span>Tallas disponibles: ${obj.size.map(element => element).join(" | ")}</span>
-                        <div>
-                            <a href="/dashboard/${obj._id}/edit">Editar</a>
+                        <div class="editProduct">
+                            <a class="buttonEdit" href="/dashboard/${obj._id}/edit">Editar</a>
                             <form action="/dashboard/${obj._id}/delete" method="post">
                                 <button type="submit">Eliminar</button>
                             </form>
@@ -127,9 +129,9 @@ const createProductTemplate = () => {
                         </div>
 
                         <div class="buttonForm">
-                        <button type="submit">Crear producto</button>
+                        <button class="buttonCreate" type="submit">Crear producto</button>
                         </div>
-                        
+                
                     </form>
                 </main>
                 <script src="/chaceSizeController.js"></script>
@@ -147,7 +149,7 @@ const editProductTemplate = (product) => {
             <body>
             ${navTemplate}
                 <main>
-                    <form action="/dashboard/${product._id}" method="POST" class="editForm">
+                    <form action="/dashboard/${product._id}?_method=PUT" method="POST" "class="editForm">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" name="name" value=""> 
                         
@@ -171,7 +173,7 @@ const editProductTemplate = (product) => {
                         <label for="size">Talla:</label>
                         <div id="sizeController"></div>
 
-                        <button type="submit">Edit Product</button>
+                        <button class="buttonEdit" type="submit">Edit Product</button>
                     </form>
                 </main>
                 <script src="/chaceSizeController.js"></script>

@@ -32,7 +32,7 @@ module.exports = {
                     size:{
                         type:'array',
                         description:"size of the product (xs to xxl for shirt, pants, and accesories and 39 to 44 for shoes)",
-                        example:"[xs, s, l, xxl]"
+                        example:"[unica, xs, s, l, xxl]"
                     },
                 }
             }

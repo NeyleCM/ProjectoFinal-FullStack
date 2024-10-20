@@ -3,10 +3,10 @@
 body {
 	width: 100%;
 	height: 100%;
-background-color: antiquewhite;
-font-family: "Poppins", sans-serif;
-font-weight: 400;
-font-style: normal;
+	
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 section {
@@ -37,6 +37,8 @@ form {
 }
 
 input[type="text"],
+input[type="password"],
+input[type="email"],
 input[type="number"],
 input[type="url"],
 textarea,
@@ -45,6 +47,14 @@ select {
     padding: 10px; /* Añadir un poco de espacio interior */
     margin: 15px; /* Espacio entre los campos */
 	border-radius: 5px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+input:hover {
+	background-color: rgba(255, 255, 255, 0.651);
+	font-weight: 600;
 }
 
 div {
@@ -65,9 +75,3 @@ form div.buttonForm {
     width: 100%;
 }
 
-button {
-    width: 200px; 
-    height: 40px; 
-    margin-top: 20px;
-	border-radius: 5px;
-}
