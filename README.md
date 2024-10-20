@@ -5,44 +5,44 @@ Es una aplicación web que permite gestionar productos de una tienda online. La 
 
 ## Estructura de archivos de la aplicación:
 
-```── config```
-   ```── db.js                     // Código para la conexión a la base de datos MongoDB```
-    ```── serviceAccount.js         // Configuración de Firebase para la autenticación de usuarios```
+── config
+    ├── db.js                     // Código para la conexión a la base de datos MongoDB
+    ├── serviceAccount.js         // Configuración de Firebase para la autenticación de usuarios
 
-```── controllers```
-    ```── productController.js       // Controlador para manejar la lógica de productos```
-    ```── authController.js          // (BONUS) Controlador para manejar la lógica de autenticación de usuarios```
+── controllers
+    ├── productController.js       // Controlador para manejar la lógica de productos
+    ├── authController.js          // (BONUS) Controlador para manejar la lógica de autenticación de usuarios
 
-```── docs```
-    ```── basicInfo.js      // Información básica de la API para Swagger```
-    ```── components.js         // Esquema de los componentes de la API (como Product)```
-    ```── endPoints.js      // Definición de los endpoints documentados en Swagger```
-    ```── index.js      // Unificación de todas las configuraciones de Swagger```
-    
-```── middlewares```
-    ```── authMiddleware.js          // Middleware para la autenticación de usuarios```
-    
-```── models```
-    ```── Product.js                 // Modelo de producto con sus campos```
-    
-```── routes```
-    ```── productRoutes.js           // Rutas para gestionar productos```
-    ```── authRoutes.js              // Rutas para gestionar la autenticación de usuarios```
-    
-```── index.js                       // Servidor principal, conexión a la base de datos y unificación del resto de la aplicación```
+── docs
+    ├── basicInfo.js               // Información básica de la API para Swagger
+    ├── components.js              // Esquema de los componentes de la API (como Product)
+    ├── endPoints.js               // Definición de los endpoints documentados en Swagger
+    ├── index.js                   // Unificación de todas las configuraciones de Swagger
 
-```── test                           // Pruebas unitarias```
-    ```── productController.test.js  // Pruebas para el controlador de productos```
-    
-```── public                         // Archivos estáticos```
-    ```──chaceSizeController.js      // Controlador para manejar la selección de tallas en el formulario de creación/edición de productos```
-    ```── styles.css                 // Estilos CSS para la aplicación```
-    ```── images                     // Carpeta para imágenes de productos```
-    ```── configLogin.js             // Configuración y lógica para manejar el inicio de sesión de usuarios```
-    
-```── .env                           // Variables de entorno, incluyendo la MONGO_URI para la base de datos```
+── middlewares
+    ├── authMiddleware.js          // Middleware para la autenticación de usuarios
 
-```── package.json                   // Información del proyecto y dependencias```
+── models
+    ├── Product.js                 // Modelo de producto con sus campos
+
+── routes
+    ├── productRoutes.js           // Rutas para gestionar productos
+    ├── authRoutes.js              // Rutas para gestionar la autenticación de usuarios
+
+── index.js                       // Servidor principal, conexión a la base de datos, unificación de Swagger y resto de la aplicación
+
+── test                           // Pruebas unitarias
+    ├── productController.test.js  // Pruebas para el controlador de productos
+
+── public                         // Archivos estáticos
+    ├── chaceSizeController.js     // Controlador para manejar la selección de tallas en el formulario de creación/edición de productos
+    ├── styles.css                 // Estilos CSS para la aplicación
+    ├── images                     // Carpeta para imágenes de productos
+    ├── configLogin.js             // Configuración y lógica para manejar el inicio de sesión de usuarios
+
+── .env                           // Variables de entorno, incluyendo la MONGO_URI para la base de datos
+
+── package.json                   // Información del proyecto y dependencias
 
 ## Tecnologías Utilizadas
 - **Node.js**: Entorno de ejecución para JavaScript del lado del servidor.
