@@ -187,4 +187,16 @@ router.delete("/dashboard/:productId/delete", async (req, res) => {
     }
 })
 
+router.post("/dashboard/logout", async (req, res) => {
+    try {
+        // Limpiar la cookie del token de autenticación
+        res.clearCookie("token", { httpOnly: true, secure: false });
+        res.redirect("/products");
+    } catch (error) {
+        console.error("Error logging out:", error);
+        res.status(500).json({ message: "Error logging out:" });
+    }
+});
+
+
 module.exports = router
