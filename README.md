@@ -3,10 +3,11 @@
 ## Descripción del Proyecto
 Es una aplicación web que permite gestionar productos de una tienda online. La API permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre los productos, autenticación de usuarios mediante Firebase. Esta aplicación está diseñada para ser escalable y fácil de mantener.
 
-# Servidor
+## Servidor
+https://projectbreak-modulo2-e11u.onrender.com/
 
 ## Estructura de archivos de la aplicación:
-https://projectbreak-modulo2-e11u.onrender.com/
+
 
 ── config
 
